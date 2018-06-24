@@ -36,7 +36,7 @@ class ProductTable extends React.Component {
     const filterText = this.props.filterText;
     const inStockOnly = this.props.inStockOnly;
     this.props.products.forEach((product) => {
-      if (product.name.indexOf(filterText) === -1) {
+      if (!product.name.toLowerCase().includes(filterText.toLowerCase())) {
         return;
       }
       if (inStockOnly && !product.stocked) {
@@ -120,9 +120,9 @@ class FilterableProductTable extends React.Component {
     return (
       <div>
         <SearchBar
-          handleFilterText={this.handleFilterText}
+          onTextChange={this.state.filterText}
           inStockOnly={this.state.inStockOnly}
-          onTextChange={this.filterText}
+          handleFilterText={this.handleFilterText}
           handleInStockOnlyChange={this.handleInStockOnlyChange}
           />
         <ProductTable
