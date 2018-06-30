@@ -78,8 +78,7 @@ class SearchBar extends React.Component {
     this.props.handleInStockOnlyChange(e.target.checked)
   }
   render() {
-    const filterText = this.props.filterText;
-    const inStockOnly = this.props.inStockOnly;
+    const {filterText, inStockOnly} = this.props;
     return (
       <form>
         <input
